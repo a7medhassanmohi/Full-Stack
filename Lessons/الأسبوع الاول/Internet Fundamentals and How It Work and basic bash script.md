@@ -285,6 +285,92 @@ export NODE_ENV=development
 echo "Server will run on port $PORT"
 node server.js
 ```
+*- `#!/bin/bash` : This is called a `shebang`. It tells the system to run this script using the bash shell.
+*- `command -v node`: checks if the command node exists in your system’s PATH.
+
+*- If Node.js is installed, it returns success (exit code 0). If not, it fails.
+
+*-` !` negates the result, so this condition means: “if Node.js is NOT found”.
+
+*- `&> /dev/null`: hides any output (so you don’t see error messages from the check).
+*- `exit 1`: stops the script immediately and returns an error code (1 means failure).
+
+## Make file executable
+```bash
+chmod +x check-node.sh
+```
+## run the file
+```bash
+./check-node.sh
+```
+
+## permissions Type
+
+r → read (you can open/read the file).
+
+w → write (you can edit/modify/delete the file).
+
+x → execute (you can run the file as a program/script).
+
+### And these permissions apply to three categories of users:
+
+1- User (u) → the owner of the file.
+
+2- Group (g) → users in the same group as the file.
+
+3- Others (o) → everyone else.
+
+## check permissions
+```bash
+ls -l check-node.sh   //  -rwxr-xr--
+```
+- First character - → it’s a file (if it was d, it would be a directory).
+
+- Next three rwx → permissions for the user (owner): read, write, execute.
+
+- Next three r-x → permissions for the group: read, execute.
+
+- Last three r-- → permissions for others: read only.
+
+```bash
+chmod u+x file   # add execute for user
+chmod g-w file   # remove write for group
+chmod o+r file   # add read for others
+chmod ugo+r file # add read for everyone
+
+```
+
+Each permission is a number:
+
+r = 4
+
+w = 2
+
+x = 1
+
+You add them up:
+
+7 = rwx (4+2+1)
+
+6 = rw- (4+2)
+
+5 = r-x (4+1)
+
+4 = r--
+```bash
+chmod 755 file
+```
+Means:
+
+7 → user = rwx
+
+5 → group = r-x
+
+5 → others = r-x
+
+
+................................
+
 
 ## Advanced Challenges
 
